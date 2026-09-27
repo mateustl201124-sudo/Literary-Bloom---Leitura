@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #12081a;
+    color: #f5eefb;
+  }
+}
+
+/* Custom scrollbar matching dark orchid atmosphere */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.4);
+}
+
+/* Reading Page Scrollbar - sleek, unobtrusive and comfortable */
+.reader-page-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
+}
+
+.reader-page-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.reader-page-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reader-page-scroll::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 9999px;
+}
+
+.reader-page-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.6);
+}
+
+/* Reader Typography Styles */
+.font-reader-serif {
+  font-family: 'Newsreader', 'Lora', Georgia, serif;
+}
+
+.font-reader-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+.font-reader-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Reader themes */
+.reader-theme-light {
+  background-color: #faf8fc;
+  color: #1a1024;
+}
+
+.reader-theme-sepia {
+  background-color: #f7eedf;
+  color: #35261d;
+}
+
+.reader-theme-dark {
+  background-color: #12081a;
+  color: #f5eefb;
+}
+
+.reader-theme-slate {
+  background-color: #1a1026;
+  color: #e9def5;
+}

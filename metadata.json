@@ -1,0 +1,6 @@
+{
+  "name": "Folio - Biblioteca Pessoal & Leitor Digital",
+  "description": "Dashboard de biblioteca pessoal para gerenciar coleções, fazer upload de livros (EPUB, PDF, TXT), ler no navegador e acompanhar o progresso de leitura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
