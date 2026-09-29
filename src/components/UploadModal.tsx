@@ -4,6 +4,7 @@ import { parseUploadedBook, generateFallbackCoverSvg } from '../services/bookPar
 import { PRESET_GENRES } from '../data/initialBooks';
 import { X, Upload, FileText, Check, AlertCircle } from 'lucide-react';
 import { TulipOrnament } from './TulipOrnament';
+import { handleImageError } from '../utils/coverAssets';
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -232,7 +233,12 @@ export const UploadModal: React.FC<UploadModalProps> = ({
                 {/* Book Cover Preview & custom upload */}
                 <div className="shrink-0 w-24 aspect-[3/4] bg-[#14081c] rounded-lg overflow-hidden border border-purple-800/60 relative group">
                   {coverUrl ? (
-                    <img src={coverUrl} alt="Capa" className="w-full h-full object-cover" />
+                    <img
+                      src={coverUrl}
+                      alt="Capa"
+                      onError={(e) => handleImageError(e, title || 'Capa', author || 'Autor')}
+                      className="w-full h-full object-cover"
+                    />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-xs text-purple-400/50 text-center p-2">
                       Sem capa

@@ -3,6 +3,7 @@ import { Book } from '../types/library';
 import confetti from 'canvas-confetti';
 import { X, CheckCircle, Clock, BookOpen } from 'lucide-react';
 import { TulipOrnament } from './TulipOrnament';
+import { resolveCoverUrl, handleImageError } from '../utils/coverAssets';
 
 interface ProgressModalProps {
   book: Book | null;
@@ -56,8 +57,9 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
         {/* Book Details */}
         <div className="flex items-center gap-3 bg-[#13071b] p-3 rounded-xl border border-purple-900/40">
           <img
-            src={book.coverUrl}
+            src={resolveCoverUrl(book.coverUrl, book.title, book.author)}
             alt={book.title}
+            onError={(e) => handleImageError(e, book.title, book.author)}
             className="w-11 aspect-[3/4] object-cover rounded shadow"
           />
           <div className="truncate">

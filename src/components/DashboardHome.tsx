@@ -3,6 +3,7 @@ import { Book, ReadingStatus } from '../types/library';
 import { BookCard } from './BookCard';
 import { BookOpen, Sparkles, Plus, Clock, ArrowRight } from 'lucide-react';
 import { TulipFrameCorner } from './TulipOrnament';
+import { resolveCoverUrl, handleImageError } from '../utils/coverAssets';
 
 interface DashboardHomeProps {
   books: Book[];
@@ -51,9 +52,10 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             {/* Small book cover thumbnail */}
             <div className="shrink-0 w-16 sm:w-20 aspect-[3/4] rounded-lg overflow-hidden shadow-md ring-1 ring-purple-800/40 bg-purple-950">
               <img
-                src={spotlightBook.coverUrl}
+                src={resolveCoverUrl(spotlightBook.coverUrl, spotlightBook.title, spotlightBook.author)}
                 alt={spotlightBook.title}
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, spotlightBook.title, spotlightBook.author)}
                 className="w-full h-full object-cover"
               />
             </div>

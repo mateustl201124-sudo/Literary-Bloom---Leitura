@@ -1,4 +1,5 @@
 import { Book } from '../types/library';
+import { PRESET_COVERS } from '../utils/coverAssets';
 
 // Curated classic books with identical 6-page editorial volume size modeled on Dom Casmurro
 export const INITIAL_BOOKS: Book[] = [
@@ -8,7 +9,7 @@ export const INITIAL_BOOKS: Book[] = [
     author: 'Machado de Assis',
     genre: 'Clássicos Brasileiros',
     description: 'A célebre narrativa de Bento Santiago (o Casmurro), relembrando sua paixão por Capitu, os olhos de ressaca e a dúvida que assombra a literatura brasileira.',
-    coverUrl: '/src/assets/images/cover_dom_casmurro_1790291703864.jpg',
+    coverUrl: PRESET_COVERS.domCasmurro,
     totalPages: 6,
     currentPage: 2,
     format: 'txt',
@@ -132,7 +133,7 @@ Mas quando Otelo, cego de fúria e dor, esgana Desdêmona no leito nupcial, um c
     author: 'Franz Kafka',
     genre: 'Ficção & Existencialismo',
     description: 'Quando Gregor Samsa acorda transformado num inseto monstruoso, tem início uma das reflexões mais pungentes e perturbadoras sobre alienação, dever e família na modernidade.',
-    coverUrl: '/src/assets/images/cover_metamorfose_1790291714560.jpg',
+    coverUrl: PRESET_COVERS.metamorfose,
     totalPages: 6,
     currentPage: 6,
     format: 'txt',
@@ -229,7 +230,7 @@ Quando a criada entrou pela manhãzinha cedo e viu a figura estendida, chamou a 
     author: 'Nicolau Maquiavel',
     genre: 'Filosofia Política',
     description: 'Tratado clássico sobre a conquista, manutenção e consolidação do poder político, a virtù do governante e as forças da fortuna.',
-    coverUrl: '/src/assets/images/cover_o_principe_1790291724695.jpg',
+    coverUrl: PRESET_COVERS.oPrincipe,
     totalPages: 6,
     currentPage: 2,
     format: 'txt',
@@ -325,7 +326,7 @@ Portanto, é necessário a um governante saber usar bem o animal e o homem. Send
     author: 'Antoine de Saint-Exupéry',
     genre: 'Fábula & Filosofia',
     description: 'Um piloto perdido no deserto do Saara conhece um pequeno príncipe de outro planeta, descobrindo o valor dos laços, do amor, da amizade e da imaginação.',
-    coverUrl: '/src/assets/images/cover_pequeno_principe_1790291734155.jpg',
+    coverUrl: PRESET_COVERS.pequenoPrincipe,
     totalPages: 6,
     currentPage: 0,
     format: 'txt',

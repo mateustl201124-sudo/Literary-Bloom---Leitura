@@ -1,6 +1,7 @@
 import React from 'react';
 import { Book } from '../types/library';
 import { Trash2, AlertTriangle, X } from 'lucide-react';
+import { resolveCoverUrl, handleImageError } from '../utils/coverAssets';
 
 interface DeleteConfirmModalProps {
   book: Book | null;
@@ -51,8 +52,9 @@ export const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
         <div className="flex items-center gap-3.5 p-3 rounded-xl bg-purple-950/50 border border-purple-900/50">
           <div className="w-12 h-16 rounded overflow-hidden bg-purple-900 shrink-0 border border-purple-800/60">
             <img
-              src={book.coverUrl}
+              src={resolveCoverUrl(book.coverUrl, book.title, book.author)}
               alt={book.title}
+              onError={(e) => handleImageError(e, book.title, book.author)}
               className="w-full h-full object-cover"
             />
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Book, ReadingStatus } from '../types/library';
 import { BookOpen, MoreVertical, CheckCircle, Trash2, Edit3, Heart, Image as ImageIcon } from 'lucide-react';
+import { resolveCoverUrl, handleImageError } from '../utils/coverAssets';
 
 interface BookCardProps {
   book: Book;
@@ -37,9 +38,10 @@ export const BookCard: React.FC<BookCardProps> = ({
       {/* Cover Image Container */}
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#14081c]">
         <img
-          src={book.coverUrl}
+          src={resolveCoverUrl(book.coverUrl, book.title, book.author)}
           alt={`Capa do livro ${book.title}`}
           referrerPolicy="no-referrer"
+          onError={(e) => handleImageError(e, book.title, book.author)}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Book } from '../types/library';
 import { Image as ImageIcon, Upload, Link as LinkIcon, Check, X, Sparkles } from 'lucide-react';
+import { PRESET_COVERS as BUNDLED_COVERS, resolveCoverUrl, handleImageError } from '../utils/coverAssets';
 
 interface ChangeCoverModalProps {
   book: Book | null;
@@ -12,19 +13,19 @@ interface ChangeCoverModalProps {
 const PRESET_COVERS = [
   {
     name: 'Dom Casmurro (Orquídea Assis)',
-    url: '/src/assets/images/cover_dom_casmurro_1790291703864.jpg',
+    url: BUNDLED_COVERS.domCasmurro,
   },
   {
     name: 'A Metamorfose (Besouro Geométrico)',
-    url: '/src/assets/images/cover_metamorfose_1790291714560.jpg',
+    url: BUNDLED_COVERS.metamorfose,
   },
   {
     name: 'O Príncipe (Coroa Dourada Renascença)',
-    url: '/src/assets/images/cover_o_principe_1790291724695.jpg',
+    url: BUNDLED_COVERS.oPrincipe,
   },
   {
     name: 'O Pequeno Príncipe (Asteroide B612)',
-    url: '/src/assets/images/cover_pequeno_principe_1790291734155.jpg',
+    url: BUNDLED_COVERS.pequenoPrincipe,
   },
   {
     name: 'Jardim Botânico Escuro & Flores',
@@ -142,12 +143,10 @@ export const ChangeCoverModal: React.FC<ChangeCoverModalProps> = ({
             {/* Live Cover Preview */}
             <div className="w-24 sm:w-28 aspect-[3/4] rounded-lg overflow-hidden bg-purple-950 shadow-xl border border-purple-700/60 shrink-0 relative group">
               <img
-                src={selectedCover}
+                src={resolveCoverUrl(selectedCover, book.title, book.author)}
                 alt="Prévia da nova capa"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = book.coverUrl;
-                }}
+                onError={(e) => handleImageError(e, book.title, book.author)}
               />
               <div className="absolute inset-0 bg-purple-900/30 pointer-events-none" />
             </div>
@@ -237,6 +236,7 @@ export const ChangeCoverModal: React.FC<ChangeCoverModalProps> = ({
                       src={preset.url}
                       alt={preset.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => handleImageError(e, preset.name, 'Literary Bloom')}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                     <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[9px] font-sans text-purple-100 line-clamp-1 leading-tight">

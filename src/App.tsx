@@ -27,6 +27,7 @@ import { ChangeCoverModal } from './components/ChangeCoverModal';
 import { TulipBackgroundAtmosphere } from './components/TulipOrnament';
 import { getAccurateBookPageCount } from './utils/bookPaginator';
 import { INITIAL_BOOKS } from './data/initialBooks';
+import { resolveCoverUrl } from './utils/coverAssets';
 
 export default function App() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -69,6 +70,16 @@ export default function App() {
             currentBook = {
               ...b,
               chapters: initialMatch.chapters,
+            };
+            saveBookToDB(currentBook);
+          }
+
+          // Migrate any legacy or unbundled coverUrls
+          const resolvedCover = resolveCoverUrl(currentBook.coverUrl, currentBook.title, currentBook.author);
+          if (resolvedCover !== currentBook.coverUrl) {
+            currentBook = {
+              ...currentBook,
+              coverUrl: resolvedCover,
             };
             saveBookToDB(currentBook);
           }
